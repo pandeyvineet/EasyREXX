@@ -1,0 +1,152 @@
+// Microsoft Visual C++ generated resource script.
+//
+#include <windows.h>
+#include "resource.h"
+/////////////////////////////////////////////////////////////////////////////
+// English (United States) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Version
+//
+
+VS_VERSION_INFO VERSIONINFO
+ FILEVERSION 3,0,0,0
+ PRODUCTVERSION 3,0,0,0
+ FILEFLAGSMASK 0x3fL
+#ifdef _DEBUG
+ FILEFLAGS 0x1L
+#else
+ FILEFLAGS 0x0L
+#endif
+ FILEOS 0x40004L
+ FILETYPE 0x1L
+ FILESUBTYPE 0x0L
+BEGIN
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName", "Don HO don.h@free.fr"
+            VALUE "FileDescription", "Plugin template for Notepad++"
+            VALUE "FileVersion", "3.0"
+            VALUE "InternalName", "NppPluginTemplate.dll"
+            VALUE "LegalCopyright", "Copyright 2016 by Don HO"
+            VALUE "OriginalFilename", "NppPluginTemplate.dll"
+            VALUE "ProductName", "NppPluginTemplate"
+            VALUE "ProductVersion", "3.0"
+        END
+    END
+END
+
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE 
+BEGIN
+    "\0"
+END
+
+3 TEXTINCLUDE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmap
+//
+
+IDB_BITMAP1             BITMAP                  "..\\vs.proj\\Bitmap.bmp"
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO
+BEGIN
+    IDD_DIALOG1, DIALOG
+    BEGIN
+        RIGHTMARGIN, 411
+        BOTTOMMARGIN, 120
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialog
+//
+
+IDD_DIALOG1 DIALOGEX 0, 0, 412, 121
+STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "EasyREXX (Beta)"
+FONT 8, "MS Shell Dlg", 400, 0, 0x1
+BEGIN
+    LTEXT           "Host Address:",IDC_STATIC,25,23,48,8
+    EDITTEXT        MYIDC_EDIT1,73,20,108,12,ES_AUTOHSCROLL
+    GROUPBOX        "FTP Settings",IDC_STATIC,9,6,194,92
+    LTEXT           "FTP ID:",IDC_STATIC,47,39,26,8
+    LTEXT           "FTP PW:",IDC_STATIC,43,56,30,8
+    EDITTEXT        IDC_EDIT2,73,37,108,12,ES_AUTOHSCROLL
+    EDITTEXT        IDC_EDIT3,73,54,108,12,ES_AUTOHSCROLL
+    LTEXT           "Upload Directory:",IDC_STATIC,14,73,58,8
+    EDITTEXT        IDC_EDIT4,73,71,108,12,ES_AUTOHSCROLL
+    GROUPBOX        "Advanced Settings",IDC_STATIC,210,6,194,92
+    CONTROL         "Replace TAB to SPACE on upload",IDC_TABCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,221,20,124,10
+    CONTROL         "Replace LF to CRLF on upload",IDC_LFCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,221,34,113,10
+    PUSHBUTTON      "Apply",IDAPPLY,354,102,50,14
+    PUSHBUTTON      "Save",IDC_BUTTON1,296,102,50,14
+END
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// AFX_DIALOG_LAYOUT
+//
+
+IDD_DIALOG1 AFX_DIALOG_LAYOUT
+BEGIN
+    0
+END
+
+#endif    // English (United States) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+
