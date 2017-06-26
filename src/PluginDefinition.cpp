@@ -80,6 +80,7 @@ void createDialog()
 // Initialization of your plugin commands
 void commandMenuInit()
 {	
+	ReadSettings(sd.hostAddress, sd.ftpId, sd.ftpPw, sd.remotePath);
 	setCommand(0, TEXT("Settings"), createDialog, NULL, false);
 	setCommand(1, TEXT("Upload"), saveUpload, NULL, false);
 }

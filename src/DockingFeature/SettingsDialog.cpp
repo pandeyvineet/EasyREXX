@@ -27,11 +27,12 @@ INT_PTR CALLBACK SettingsDialog::run_dlgProc(UINT Message, WPARAM wParam, LPARAM
 	{
 	case WM_INITDIALOG:
 	{
-		ReadSettings(hostAddress, ftpId, ftpPw, remotePath);
+		
 		SetDlgItemText(_hSelf, MYIDC_EDIT1, hostAddress);
 		SetDlgItemText(_hSelf, IDC_EDIT2, ftpId);
 		SetDlgItemText(_hSelf, IDC_EDIT3, ftpPw);
 		SetDlgItemText(_hSelf, IDC_EDIT4, remotePath);
+
 		return TRUE;
 	}
 	case WM_COMMAND:
