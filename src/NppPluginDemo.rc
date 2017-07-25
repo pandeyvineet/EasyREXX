@@ -1,7 +1,7 @@
 // Microsoft Visual C++ generated resource script.
 //
-#include <windows.h>
 #include "resource.h"
+#include <windows.h>
 /////////////////////////////////////////////////////////////////////////////
 // English (United States) resources
 
@@ -91,8 +91,8 @@ GUIDELINES DESIGNINFO
 BEGIN
     IDD_DIALOG1, DIALOG
     BEGIN
-        RIGHTMARGIN, 411
-        BOTTOMMARGIN, 120
+        RIGHTMARGIN, 412
+        BOTTOMMARGIN, 122
     END
 END
 #endif    // APSTUDIO_INVOKED
@@ -103,25 +103,29 @@ END
 // Dialog
 //
 
-IDD_DIALOG1 DIALOGEX 0, 0, 412, 121
+#define IDC_STATIC -1
+
+IDD_DIALOG1 DIALOGEX 0, 0, 413, 123
 STYLE DS_SETFONT | DS_MODALFRAME | DS_FIXEDSYS | WS_POPUP | WS_CAPTION | WS_SYSMENU
 CAPTION "EasyREXX (Beta)"
 FONT 8, "MS Shell Dlg", 400, 0, 0x1
 BEGIN
-    LTEXT           "Host Address:",IDC_STATIC,25,23,48,8
-    EDITTEXT        MYIDC_EDIT1,73,20,108,12,ES_AUTOHSCROLL
-    GROUPBOX        "FTP Settings",IDC_STATIC,9,6,194,92
-    LTEXT           "FTP ID:",IDC_STATIC,47,39,26,8
-    LTEXT           "FTP PW:",IDC_STATIC,43,56,30,8
-    EDITTEXT        IDC_EDIT2,73,37,108,12,ES_AUTOHSCROLL
-    EDITTEXT        IDC_EDIT3,73,54,108,12,ES_AUTOHSCROLL
-    LTEXT           "Upload Directory:",IDC_STATIC,14,73,58,8
-    EDITTEXT        IDC_EDIT4,73,71,108,12,ES_AUTOHSCROLL
+    LTEXT           "Host Address:",IDC_STATIC,28,23,48,8
+    EDITTEXT        HOST_ADDRESS_EDIT,76,20,108,12,ES_AUTOHSCROLL
+    GROUPBOX        "FTP Settings",IDC_STATIC,9,6,194,107
+    LTEXT           "FTP ID:",IDC_STATIC,50,39,26,8
+    LTEXT           "FTP PW:",IDC_STATIC,46,56,30,8
+    EDITTEXT        ID_EDIT,76,37,108,12,ES_AUTOHSCROLL
+    EDITTEXT        PW_EDIT,76,54,108,12,ES_AUTOHSCROLL
+    LTEXT           "Upload Directory:",IDC_STATIC,17,73,58,8
+    EDITTEXT        DIRECTORY_EDIT,76,71,108,12,ES_AUTOHSCROLL
     GROUPBOX        "Advanced Settings",IDC_STATIC,210,6,194,92
-    CONTROL         "Replace TAB to SPACE on upload",IDC_TABCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,221,20,124,10
-    CONTROL         "Replace LF to CRLF on upload",IDC_LFCHECK,"Button",BS_AUTOCHECKBOX | WS_TABSTOP,221,34,113,10
     PUSHBUTTON      "Apply",IDAPPLY,354,102,50,14
-    PUSHBUTTON      "Save",IDC_BUTTON1,296,102,50,14
+    PUSHBUTTON      "Save",IDSAVE,296,102,50,14
+    LTEXT           "*Remove top dsname level from your upload directory!",IDC_STATIC,17,87,180,8
+    LTEXT           "(abc123.abc123.clist -> abc123.clist)",IDC_STATIC,20,95,181,8
+    CONTROL         "Automatically close message box after 3 seconds",MSGBOX_CHECK,
+                    "Button",BS_AUTOCHECKBOX | WS_TABSTOP,221,22,170,10
 END
 
 

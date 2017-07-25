@@ -1,7 +1,11 @@
+#pragma once
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
+
 #include <windows.h>
 #include <string>
 #include "StaticDialog.h"
-#include "../PluginDefinition.h"
+#include "../EasyRexx.h"
 
 
 class SettingsDialog : public StaticDialog
@@ -17,16 +21,20 @@ public:
 	};
 
 	void doDialog();
-	bool isCheckBoxOn(int);
+	void SetDialogItems();
+	void GetDialogItems();
+	bool getCheckBoxState(int);
+	bool setCheckBoxState(int, bool);
 	virtual void destroy() {};
 	
 	WCHAR hostAddress[100] = L"mcevs1.mainz.de.ibm.com";
 	WCHAR ftpId[100] = L"abc123";
 	WCHAR ftpPw[100] = L"password123";
 	WCHAR remotePath[100] = L"abc123.clist";
-
-	bool converttab = false;
-	bool convertlf = false;
+	bool isBackUpChecked = false;
+	bool isMsgChecked = false;
+	bool isHotKeyChecked = false;
+	
 
 protected:
 	virtual INT_PTR CALLBACK run_dlgProc(UINT message, WPARAM wParam, LPARAM lParam);
@@ -39,4 +47,6 @@ private:
 	
 
 };
+
+#endif
 

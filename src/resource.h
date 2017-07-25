@@ -37,8 +37,6 @@
 #define _USE_ATTRIBUTES_FOR_SAL         0
 #define __drv_typeConst                 0
 #define PSAPI_VERSION                   1
-#define CREATEPROCESS_MANIFEST_RESOURCE_ID 1
-#define MINIMUM_RESERVED_MANIFEST_RESOURCE_ID 1
 #define SW_SHOWNORMAL                   1
 #define SW_NORMAL                       1
 #define SHOW_OPENWINDOW                 1
@@ -63,7 +61,7 @@
 #define CS_VREDRAW                      0x0001
 #define CF_TEXT                         1
 #define SCF_ISSECURE                    0x00000001
-#define IDOK                            1
+#define IDAPPLY                         1
 #define BN_PAINT                        1
 #define BST_CHECKED                     0x0001
 #define TBSTYLE_SEP                     0x0001
@@ -211,9 +209,9 @@
 #define VFFF_ISSHAREDFILE               0x0001
 #define VFF_CURNEDEST                   0x0001
 #define VIFF_FORCEINSTALL               0x0001
-#define IDAPPLY                         1
 #define XBUTTON                         0x0001
-#define ISOLATIONAWARE_MANIFEST_RESOURCE_ID 2
+#undef CREATEPROCESS_MANIFEST_RESOURCE_ID 
+#undef MINIMUM_RESERVED_MANIFEST_RESOURCE_ID 
 #define SW_SHOWMINIMIZED                2
 #define SHOW_ICONWINDOW                 2
 #define SW_OTHERZOOM                    2
@@ -235,7 +233,6 @@
 #define TME_LEAVE                       0x00000002
 #define CS_HREDRAW                      0x0002
 #define CF_BITMAP                       2
-#define IDCANCEL                        2
 #define BN_HILITE                       2
 #define BST_INDETERMINATE               0x0002
 #define HDS_BUTTONS                     0x0002
@@ -292,7 +289,7 @@
 #define __drv_typeBitset                2
 #define VFF_FILEINUSE                   0x0002
 #define VIFF_DONTDELETEOLD              0x0002
-#define ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID 3
+#undef ISOLATIONAWARE_MANIFEST_RESOURCE_ID 
 #define SW_SHOWMAXIMIZED                3
 #define SW_MAXIMIZE                     3
 #define SHOW_FULLSCREEN                 3
@@ -325,6 +322,7 @@
 #define SORT_CHINESE_BOPOMOFO           0x3
 #define __drv_typeExpr                  3
 #define ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID1 3
+#undef ISOLATIONAWARE_NOSTATICIMPORT_MANIFEST_RESOURCE_ID 
 #define SW_SHOWNOACTIVATE               4
 #define SHOW_OPENNOACTIVATE             4
 #define SW_OTHERUNZOOM                  4
@@ -517,7 +515,6 @@
 #define LANG_ICELANDIC                  0x0f
 #define SUBLANG_ARABIC_BAHRAIN          0x0f
 #define SUBLANG_SPANISH_PARAGUAY        0x0f
-#define MAXIMUM_RESERVED_MANIFEST_RESOURCE_ID 16
 #define VK_SHIFT                        0x10
 #define WM_CLOSE                        0x0010
 #define HTBOTTOMLEFT                    16
@@ -543,6 +540,7 @@
 #define SUBLANG_ARABIC_QATAR            0x10
 #define SUBLANG_ENGLISH_INDIA           0x10
 #define SUBLANG_SPANISH_BOLIVIA         0x10
+#undef MAXIMUM_RESERVED_MANIFEST_RESOURCE_ID 
 #define VK_CONTROL                      0x11
 #define WM_QUERYENDSESSION              0x0011
 #define HTBOTTOMRIGHT                   17
@@ -580,10 +578,10 @@
 #define LANG_PORTUGUESE                 0x16
 #define VK_JUNJA                        0x17
 #define LANG_ROMANSH                    0x17
-#define RT_MANIFEST                     24
 #define VK_FINAL                        0x18
 #define WM_SHOWWINDOW                   0x0018
 #define LANG_ROMANIAN                   0x18
+#undef RT_MANIFEST                     
 #define VK_HANJA                        0x19
 #define VK_KANJI                        0x19
 #define LANG_RUSSIAN                    0x19
@@ -1160,18 +1158,16 @@
 #define WM_PENWINFIRST                  0x0380
 #define WM_PENWINLAST                   0x038F
 #define WM_DDE_FIRST                    0x03E0
-#define MYIDC_EDIT1                     1004
-#define IDC_EDIT2                       1005
-#define IDC_EDIT3                       1006
-#define IDC_EDIT4                       1007
-#define IDC_BUTTON1                     1008
-#define IDC_BUTTON2                     1009
+#define HOST_ADDRESS_EDIT               1004
+#define ID_EDIT                         1005
+#define PW_EDIT                         1006
+#define DIRECTORY_EDIT                  1007
 #define IDSAVE                          1009
-#define IDC_CHECK1                      1010
-#define TAB_CHECK                       1010
-#define IDC_TABCHECK                    1010
-#define IDC_CHECK2                      1011
-#define IDC_LFCHECK                     1011
+#define BACKUP_CHECK                    1010
+#define MSGBOX_CHECK                    1011
+#define HOTKEY_CHECK                    1012
+#define LANG_CHECK                      1013
+#define IDC_CHECK2                      1014
 #define CF_GDIOBJLAST                   0x03FF
 #define _WIN32_WINNT_NT4                0x0400
 #define _WIN32_IE_IE40                  0x0400
@@ -1356,9 +1352,10 @@
 #define FILEOPENORD                     1536
 #define _WIN32_WINNT_WIN7               0x0601
 #define _WIN32_IE_IE60SP1               0x0601
-#define _WIN32_WINNT                    0x0601
 #define MULTIFILEOPENORD                1537
 #define _WIN32_WINNT1                   0x0601
+#define MSGBOX_EDIT                     1537
+#undef _WIN32_WINNT                    
 #define _WIN32_IE_WS03                  0x0602
 #define PRINTDLGORD                     1538
 #define _WIN32_IE_IE60SP2               0x0603
@@ -1380,7 +1377,6 @@
 #define IDC_MANAGE_LINK                 1592
 #define _WIN32_IE_IE70                  0x0700
 #define _WIN32_IE_IE80                  0x0800
-#define _WIN32_IE                       0x0800
 #define CS_SAVEBITS                     0x0800
 #define HDS_NOSIZING                    0x0800
 #define TBSTYLE_FLAT                    0x0800
@@ -1392,6 +1388,7 @@
 #define TVS_INFOTIP                     0x0800
 #define TCS_RAGGEDRIGHT                 0x0800
 #define _WIN32_IE1                      0x0800
+#undef _WIN32_IE                       
 #define IDD_PLUGINGOLINE_DEMO           2500
 #define LVS_ALIGNMASK                   0x0c00
 #define CS_BYTEALIGNCLIENT              0x1000
@@ -1426,23 +1423,23 @@
 #define IDTIMEOUT                       32000
 #define OCR_NORMAL                      32512
 #define OIC_SAMPLE                      32512
-#define IDI_APPLICATION                 32512
+#undef IDI_APPLICATION                 
 #define OCR_IBEAM                       32513
 #define OIC_HAND                        32513
-#define IDI_HAND                        32513
+#undef IDI_HAND                        
 #define OCR_WAIT                        32514
 #define OIC_QUES                        32514
-#define IDI_QUESTION                    32514
+#undef IDI_QUESTION                    
 #define OCR_CROSS                       32515
 #define OIC_BANG                        32515
-#define IDI_EXCLAMATION                 32515
+#undef IDI_EXCLAMATION                 
 #define OCR_UP                          32516
 #define OIC_NOTE                        32516
-#define IDI_ASTERISK                    32516
+#undef IDI_ASTERISK                    
 #define OIC_WINLOGO                     32517
-#define IDI_WINLOGO                     32517
+#undef IDI_WINLOGO                     
 #define OIC_SHIELD                      32518
-#define IDI_SHIELD                      32518
+#undef IDI_SHIELD                      
 #define OCR_SIZE                        32640
 #define OCR_ICON                        32641
 #define OCR_SIZENWSE                    32642
@@ -1518,19 +1515,19 @@
 #define SC_CONTEXTHELP                  0xF180
 #define LVS_TYPESTYLEMASK               0xfc00
 #define SPVERSION_MASK                  0x0000FF00
-#define HTERROR                         -2
+#undef HTERROR                         
 #define UNICODE_NOCHAR                  0xFFFF
-#define PWR_FAIL                        -1
-#define HTTRANSPARENT                   -1
-#define IDC_STATIC                      -1
+#undef PWR_FAIL                        
+#undef HTTRANSPARENT                   
+#undef IDC_STATIC                      
 
 // Next default values for new objects
 // 
 #ifdef APSTUDIO_INVOKED
 #ifndef APSTUDIO_READONLY_SYMBOLS
-#define _APS_NEXT_RESOURCE_VALUE        108
+#define _APS_NEXT_RESOURCE_VALUE        110
 #define _APS_NEXT_COMMAND_VALUE         40001
-#define _APS_NEXT_CONTROL_VALUE         1011
+#define _APS_NEXT_CONTROL_VALUE         1015
 #define _APS_NEXT_SYMED_VALUE           101
 #endif
 #endif

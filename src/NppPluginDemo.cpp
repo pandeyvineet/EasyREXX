@@ -15,7 +15,7 @@
 //along with this program; if not, write to the Free Software
 //Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-#include "PluginDefinition.h"
+#include "EasyRexx.h"
 extern "C" { int _afxForceUSRDLL; }
 extern FuncItem funcItem[nbFunc];
 extern NppData nppData;

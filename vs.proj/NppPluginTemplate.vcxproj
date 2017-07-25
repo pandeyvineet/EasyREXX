@@ -20,13 +20,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="..\src\AdvancedSettings.h" />
-    <ClInclude Include="..\src\DockingFeature\resource.h" />
     <ClInclude Include="..\src\DockingFeature\SettingsDialog.h" />
     <ClInclude Include="..\src\DockingFeature\StaticDialog.h" />
     <ClInclude Include="..\src\DockingFeature\Window.h" />
     <ClInclude Include="..\src\menuCmdID.h" />
     <ClInclude Include="..\src\Notepad_plus_msgs.h" />
-    <ClInclude Include="..\src\PluginDefinition.h" />
+    <ClInclude Include="..\src\EasyRexx.h" />
     <ClInclude Include="..\src\PluginInterface.h" />
     <ClInclude Include="..\src\resource.h" />
     <ClInclude Include="..\src\Scintilla.h" />
@@ -36,8 +35,8 @@
     <ClCompile Include="..\src\AdvancedSettings.cpp" />
     <ClCompile Include="..\src\DockingFeature\SettingsDialog.cpp" />
     <ClCompile Include="..\src\DockingFeature\StaticDialog.cpp" />
+    <ClCompile Include="..\src\EasyRexx.cpp" />
     <ClCompile Include="..\src\NppPluginDemo.cpp" />
-    <ClCompile Include="..\src\PluginDefinition.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="..\src\NppPluginDemo.rc" />

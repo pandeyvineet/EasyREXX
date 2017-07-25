@@ -1,18 +1,49 @@
+// SettingsDialog.cpp controls the dialog box that is
+// associated with EasyRexx plugin command "Settings".
+
 #include <afxwin.h>
 #include <Windows.h>
 #include <Windowsx.h>
 #include <string>
 #include <sstream>
 #include "SettingsDialog.h"
-#include "resource.h"
 #include "../AdvancedSettings.h"
+#include "../resource.h"
+#include "../menuCmdId.h"
 
 
-bool SettingsDialog::isCheckBoxOn(int checknum)
+/********************************************************************/
+/* Function:  getCheckBoxState                                      */
+/*                                                                  */
+/* Purpose:   Return true if checkbox is currently checked.         */
+/*            Return false otherwise.                               */
+/*                                                                  */
+/********************************************************************/
+bool SettingsDialog::getCheckBoxState(int checknum)
 {
 	return SendDlgItemMessage(_hSelf, checknum, BM_GETCHECK, 0, 0);
 }
 
+/********************************************************************/
+/* Function:  setCheckBoxState                                      */
+/*                                                                  */
+/* Purpose:   Check or uncheck checkbox                             */
+/*                                                                  */
+/********************************************************************/
+bool SettingsDialog::setCheckBoxState(int checknum, bool check)
+{
+	if(check)
+		return SendDlgItemMessage(_hSelf, checknum, BM_SETCHECK, BST_CHECKED, 0);
+	else
+		return SendDlgItemMessage(_hSelf, checknum, BM_SETCHECK, BST_UNCHECKED, 0);
+}
+
+/********************************************************************/
+/* Function:  doDialog                                              */
+/*                                                                  */
+/* Purpose:   Create Settings dialogbox                             */
+/*                                                                  */
+/********************************************************************/
 void SettingsDialog::doDialog()
 {
 	if (!isCreated())
@@ -21,55 +52,102 @@ void SettingsDialog::doDialog()
 	goToCenter();
 }
 
+/********************************************************************/
+/* Function:  SetDialogItems                                        */
+/*                                                                  */
+/* Purpose:   Set content of all items(textbox, checkbox)           */
+/*            in the dialogbox                                      */
+/*                                                                  */
+/********************************************************************/
+void SettingsDialog::SetDialogItems()
+{
+	SetDlgItemText(_hSelf, HOST_ADDRESS_EDIT, hostAddress);
+	SetDlgItemText(_hSelf, ID_EDIT, ftpId);
+	SetDlgItemText(_hSelf, PW_EDIT, ftpPw);
+	SetDlgItemText(_hSelf, DIRECTORY_EDIT, remotePath);
+	setCheckBoxState(BACKUP_CHECK, isBackUpChecked);
+	setCheckBoxState(MSGBOX_CHECK, isMsgChecked);
+	setCheckBoxState(HOTKEY_CHECK, isHotKeyChecked);
+}
+
+/********************************************************************/
+/* Function:  GetDialogItems                                        */
+/*                                                                  */
+/* Purpose:   Retrieve content of all items(textbox, checkbox)      */
+/*            in the dialogbox and put them in variables            */
+/*                                                                  */
+/********************************************************************/
+void SettingsDialog::GetDialogItems()
+{
+	GetDlgItemText(_hSelf, HOST_ADDRESS_EDIT, hostAddress, 100);
+	GetDlgItemText(_hSelf, ID_EDIT, ftpId, 100);
+	GetDlgItemText(_hSelf, PW_EDIT, ftpPw, 100);
+	GetDlgItemText(_hSelf, DIRECTORY_EDIT, remotePath, 100);
+	isBackUpChecked = getCheckBoxState(BACKUP_CHECK);
+	isMsgChecked = getCheckBoxState(MSGBOX_CHECK);
+	isHotKeyChecked = getCheckBoxState(HOTKEY_CHECK);
+}
+
+/********************************************************************/
+/* Function:  run_dlgProc                                           */
+/*                                                                  */
+/* Purpose:   Event handler for Settings dialogbox.                 */
+/*                                                                  */
+/********************************************************************/
 INT_PTR CALLBACK SettingsDialog::run_dlgProc(UINT Message, WPARAM wParam, LPARAM /*lParam*/)
 {
+	//MessageBox(NULL, L"HELLO!", L"ERROR", MB_ICONERROR);
 	switch (Message)
 	{
 	case WM_INITDIALOG:
 	{
 		
-		SetDlgItemText(_hSelf, MYIDC_EDIT1, hostAddress);
-		SetDlgItemText(_hSelf, IDC_EDIT2, ftpId);
-		SetDlgItemText(_hSelf, IDC_EDIT3, ftpPw);
-		SetDlgItemText(_hSelf, IDC_EDIT4, remotePath);
-
+		SetDialogItems();
 		return TRUE;
 	}
 	case WM_COMMAND:
 	{		
 		switch (wParam)
 		{
-		case IDAPPLY:			
-			GetDlgItemText(_hSelf, MYIDC_EDIT1, hostAddress, 100);
-			GetDlgItemText(_hSelf, IDC_EDIT2, ftpId, 100);
-			GetDlgItemText(_hSelf, IDC_EDIT3, ftpPw, 100);
-			GetDlgItemText(_hSelf, IDC_EDIT4, remotePath, 100);
+		// When checkbox is checked
+		case MSGBOX_CHECK:
+		{
+			if (getCheckBoxState(MSGBOX_CHECK))
+				isMsgChecked = true;
+			else
+				isMsgChecked = false;
+			return true;
+		}
+		// When apply button is clicked
+		case IDAPPLY:
+		{
+			GetDialogItems();
 
-			if (isCheckBoxOn(IDC_TABCHECK))
-				converttab = true;			
-			if (isCheckBoxOn(IDC_LFCHECK))
-				convertlf = true;	
-
-			MessageBox(NULL, L"Settings applied.", L"EasyREXX", MB_OK| MB_ICONINFORMATION);
+			MessageBox(NULL, L"Settings applied.", L"EasyREXX", MB_OK | MB_ICONINFORMATION);
 			display(FALSE);
 			return true;
-
+		}
+		// When save button is clicked
 		case IDSAVE:
-			GetDlgItemText(_hSelf, MYIDC_EDIT1, hostAddress, 100);
-			GetDlgItemText(_hSelf, IDC_EDIT2, ftpId, 100);
-			GetDlgItemText(_hSelf, IDC_EDIT3, ftpPw, 100);
-			GetDlgItemText(_hSelf, IDC_EDIT4, remotePath, 100);
+		{
+			GetDialogItems();
 
-			WriteSettings(hostAddress, ftpId, ftpPw, remotePath);
+			WriteSettings(hostAddress, ftpId, ftpPw, remotePath, isBackUpChecked, isMsgChecked, isHotKeyChecked);
 			MessageBox(NULL, L"Settings saved.\nIt will automatically load current settings at start of program.", L"EasyREXX", MB_OK | MB_ICONINFORMATION);
 			return true;
-
+		}
+		// When dialogbox exits out
 		case IDCANCEL:
+		{
 			display(FALSE);
 			return true;
+		}
 
 		default:
+		{
 			break;
+		}
+			
 		}
 	}
 	}
