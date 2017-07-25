@@ -1,6 +1,6 @@
 # EasyREXX
 
-EasyREXX is a Notepad++ plugin designed to automate REXX programming process.
+EasyREXX is a Notepad++ plugin designed to help REXX programming in Windows environment
 
 Just in one-click, you can
 - Optimize your code for zOS environment: Replace TAB to SPACE, EOL to CRLF.
