@@ -17,7 +17,7 @@ How to use:
 
 3) On the Settings dialogbox, configure your FTP settings and press save/apply
 
-	![settings tutorial2](https://user-images.githubusercontent.com/21282908/28587764-4b8c3f48-7146-11e7-8b5c-0e6c73f080b0.png)
+	![settings tutorial2](https://user-images.githubusercontent.com/21282908/52868424-4d253580-3111-11e9-9979-84db67f4f7f9.png)
 
 
 
